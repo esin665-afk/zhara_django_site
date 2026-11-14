@@ -1,0 +1,36 @@
+/* static/css/style.css */
+
+body {
+    background-color: #1a1a1a; /* Темный, почти черный фон */
+    color: #ffffff; /* Белый текст */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 40px;
+    text-align: center; /* Выравнивание по центру */
+}
+
+h1 {
+    color: #e50914; /* Яркий красный цвет */
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #cccccc; /* Светло-серый для текста */
+    line-height: 1.6;
+}
+
+/* Стили для будущих кнопок и ссылок */
+a {
+    color: #e50914;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ff3333; /* Меняет цвет при наведении */
+    text-decoration: underline;
+}

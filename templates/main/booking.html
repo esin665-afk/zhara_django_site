@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Забронировать дату | ЖАРА</title>
+</head>
+<body>
+    <h1>Забронировать выступление</h1>
+    <form method="post">
+        {% csrf_token %} <!-- ВАЖНО: Защитный токен Django -->
+
+        <div>
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div>
+            <label for="date">Дата мероприятия:</label>
+            <input type="date" id="date" name="event_date" required>
+        </div>
+        <button type="submit">Отправить заявку</button>
+    </form>
+</body>
+</html>
