@@ -1,20 +1,101 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЖАРА | Официальный сайт</title>
-    <!-- Подключаем сначала Bootstrap, потом свои стили, чтобы их можно было переопределять -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <!-- Контейнер для центрирования контента -->
-    <div class="container text-center mt-5">
-        <h1 class="display-4 mb-4">🔥 Добро пожаловать на сайт кавер-группы «ЖАРА»!</h1>
-        <p class="lead">Скоро здесь будет красивая афиша и форма заказа.</p>
 
-        <!-- Кнопка для перехода на страницу бронирования -->
-        <a href="/booking/" class="btn btn-danger btn-lg mt-4">Забронировать дату</a>
-    </div>
+    <!-- ГЛАВНЫЙ ЭКРАН С ВИДЕО -->
+    <section class="hero" id="hero-section">
+        <!-- Фоновое видео -->
+        <video class="bg-video" id="bg-video" autoplay loop muted playsinline webkit-playsinline preload="auto">
+            <source src="{% static 'video/promo.mp4' %}" type="video/mp4">
+        </video>
+
+        <!-- Текст поверх видео -->
+        <div class="hero-content">
+            <span class="subtitle">ЖИВАЯ МУЗЫКА · LIVE BAND</span>
+            <h1>ЖИВАЯ МУЗЫКА<br>ДЛЯ ЖИВЫХ <span>ЭМОЦИЙ</span></h1>
+            <p>Свадьбы • Корпоративы • Выпускные • Дни рождения</p>
+            <a href="/booking/" class="btn">Забронировать дату</a>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ О ГРУППЕ С ФОТО НА ФОНЕ -->
+    <section class="about-section" style="background-image: url('{% static 'images/about-bg.jpg' %}');">
+        <div class="about-content">
+            <h2>ЭТО НЕ ФОНОВАЯ МУЗЫКА.<br>ЭТО <span>ЧАСТЬ ВАШЕГО</span> СОБЫТИЯ.</h2>
+
+            <p>«ЖАРА» — музыканты и вокалисты, которые выходят не просто сыграть программу, а стать частью вечера. Подбираем музыку под аудиторию, формат и настроение события. От первого танца до финального трека держим внимание зала и оставляем пространство для настоящих моментов.</p>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>4</h3>
+                    <p>музыканта</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>живой звук</p>
+                </div>
+                <div class="stat-item">
+                    <h3>∞</h3>
+                    <p>энергии</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ ВИДЕО -->
+    <section class="video-section">
+        <h2 class="section-title">ЛУЧШЕ ОДИН РАЗ УВИДЕТЬ.</h2>
+        <div class="video-grid">
+            <!-- Карточка 1 -->
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Промо 2026">
+                <div class="video-overlay">
+                    <div class="play-btn">▶</div>
+                </div>
+                <div class="video-caption">PROMO 2026</div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1470229722913-7c090b033205c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Live концерт">
+                <div class="video-overlay">
+                    <div class="play-btn">▶</div>
+                </div>
+                <div class="video-caption">LIVE 2026</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById('bg-video');
+
+            // Принудительный запуск видео
+            var playPromise = video.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Автозапуск сработал
+                    console.log("Видео запущено автоматически");
+                })
+                .catch(error => {
+                    // Автозапуск заблокирован браузером
+                    console.log("Автозапуск заблокирован. Ждем клика пользователя.");
+
+                    // Если автозапуск не сработал, запускаем по первому клику в любом месте экрана
+                    document.addEventListener('click', function() {
+                        video.play();
+                    }, { once: true }); // Сработает только один раз
+                });
+            }
+        });
+    </script>
 </body>
 </html>
