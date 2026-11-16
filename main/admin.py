@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import BookingRequest
+from .models import BotOrder
 
-@admin.register(BookingRequest)
-class BookingAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'event_date', 'created_at')
+@admin.register(BotOrder)
+class BotOrderAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'event_date', 'created_at', 'status')
     search_fields = ('name', 'phone')

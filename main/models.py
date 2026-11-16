@@ -1,15 +1,26 @@
 from django.db import models
 
-class BookingRequest(models.Model):
-    """Модель для заявок на выступление с сайта"""
-    name = models.CharField(max_length=100, verbose_name="Имя клиента")
-    phone = models.CharField(max_length=20, verbose_name="Телефон")
-    event_date = models.DateField(verbose_name="Дата мероприятия")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания заявки")
-
-    def __str__(self):
-        return f"{self.name} - {self.phone}"
+class BotUser(models.Model):
+    telegram_id = models.BigIntegerField(unique=True)
+    first_name = models.CharField(max_length=100, blank=True, null=True)
+    username = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        verbose_name = "Заявка на выступление"
-        verbose_name_plural = "Заявки на выступление"
+        managed = False
+        db_table = 'users'
+
+class BotOrder(models.Model):
+    user = models.ForeignKey(BotUser, on_delete=models.CASCADE, db_column='user_id', to_field='telegram_id', null=True, blank=True)
+    event_date = models.CharField(max_length=50, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=50, default='Новый', blank=True, null=True)
+
+    # Наши поля для заявок с сайта
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Имя клиента")
+    phone = models.CharField(max_length=20, blank=True, null=True, verbose_name="Телефон")
+
+    class Meta:
+        managed = False
+        db_table = 'orders'
+        ordering = ['-created_at']
