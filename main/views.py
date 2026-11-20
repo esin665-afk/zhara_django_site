@@ -1,49 +1,58 @@
+import os
+import requests
 from django.shortcuts import render
 from .models import BotOrder
-import requests
 
-# --- НАСТРОЙКИ ТЕЛЕГРАМ БОТА ---
-TELEGRAM_BOT_TOKEN = "8767475737:AAEH-wPt2Xred_XaDzcyLp69A8DxT-G7g60"
-TELEGRAM_CHAT_ID = 1606744507
+TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+TELEGRAM_CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID', '')
+
 
 def index(request):
     """Главная страница сайта."""
     return render(request, 'main/index.html')
 
+
 def contacts(request):
     """Страница с контактами."""
     return render(request, 'main/contacts.html')
 
+
 def booking(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        event_date = request.POST.get('event_date')
+    if request.method != 'POST':
+        return render(request, 'main/booking.html')
 
-        # 1. Сначала сохраняем заявку в базу данных (общая таблица orders)
-        BotOrder.objects.create(
-            name=name,
-            phone=phone,
-            event_date=event_date,
-            status='Новый'
+    name = request.POST.get('name', '').strip()
+    phone = request.POST.get('phone', '').strip()
+    event_date = request.POST.get('event_date', '').strip()
+
+    if not name or not phone:
+        return render(request, 'main/booking.html', {'error': 'Укажите имя и телефон'})
+
+    BotOrder.objects.create(
+        name=name,
+        phone=phone,
+        event_date=event_date,
+        status='Новый',
+    )
+
+    text = (
+        f"🔥 Новая заявка с сайта!\n\n"
+        f"👤 Имя: {name}\n"
+        f"📞 Телефон: {phone}\n"
+        f"📅 Дата: {event_date}"
+    )
+
+    try:
+        response = requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
+            json={"chat_id": TELEGRAM_CHAT_ID, "text": text},
+            timeout=25,
         )
+        if not response.ok:
+            print(f"Telegram ответил ошибкой: {response.status_code} {response.text}")
+        else:
+            print("Уведомление отправлено")
+    except Exception as e:
+        print(f"Ошибка Telegram: {e}")
 
-        # 2. ОТПРАВЛЯЕМ УВЕДОМЛЕНИЕ В TELEGRAM
-        text = f"🔥 Новая заявка с сайта!\n\n👤 Имя: {name}\n📞 Телефон: {phone}\n📅 Дата: {event_date}"
-        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-
-        try:
-            # Отправляем запрос (таймаут 5 сек, чтобы страница не висела, если TG недоступен)
-            requests.post(url, json={
-                "chat_id": TELEGRAM_CHAT_ID,
-                "text": text,
-                "parse_mode": "HTML"
-            }, timeout=5)
-        except Exception as e:
-            print(f"Ошибка Telegram: {e}")
-
-        # 3. ТОЛЬКО ТЕПЕРЬ ВЫВОДИМ ОТВЕТ НА САЙТЕ (возвращаем красивую страницу)
-        return render(request, 'main/success.html')
-
-    # Если это GET-запрос (пользователь просто зашел на страницу), показываем форму
-    return render(request, 'main/booking.html')
+    return render(request, 'main/success.html')
