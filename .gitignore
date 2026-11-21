@@ -4,3 +4,7 @@ __pycache__/
 env/
 *.sqlite*
 .env
+*.mp4
+*.mov
+*.avi
+*.zip

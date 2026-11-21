@@ -50,52 +50,89 @@
     </section>
 
     <!-- СЕКЦИЯ ВИДЕО -->
-    <section class="video-section">
+    <section class="video-section" id="video">
         <h2 class="section-title">ЛУЧШЕ ОДИН РАЗ УВИДЕТЬ.</h2>
+
         <div class="video-grid">
-            <!-- Карточка 1 -->
+            <!-- Карточка 1: Промо -->
             <div class="video-card">
-                <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Промо 2026">
+                <img src="{% static 'images/promo-cover.jpg' %}" alt="Промо 2026">
                 <div class="video-overlay">
-                    <div class="play-btn">▶</div>
+                    <!-- ВНИМАНИЕ: Проверь название файла (promo.mp4 или promo-cover.mp4) -->
+                    <button class="play-btn" onclick="openVideo('{% static 'video/promo-cover.mp4' %}')">▶</button>
                 </div>
-                <div class="video-caption">PROMO 2026</div>
+                <div class="video-caption">Промо 2026</div>
             </div>
 
-            <!-- Карточка 2 -->
+            <!-- Карточка 2: Live концерт -->
             <div class="video-card">
-                <img src="https://images.unsplash.com/photo-1470229722913-7c090b033205c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Live концерт">
+                <img src="{% static 'images/live-cover.jpg' %}" alt="Live концерт">
                 <div class="video-overlay">
-                    <div class="play-btn">▶</div>
+                    <button class="play-btn" onclick="openVideo('{% static 'video/live-cover.mp4' %}')">▶</button>
                 </div>
-                <div class="video-caption">LIVE 2026</div>
+                <div class="video-caption">Live концерт</div>
             </div>
         </div>
     </section>
 
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ВИДЕО -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeVideo()">&times;</span>
+            <!-- controls - показывает кнопку play/pause, звук и т.д. -->
+            <video id="localVideo" controls playsinline style="width: 100%; height: 100%; border-radius: 10px; background: #000;"></video>
+        </div>
+    </div>
+
+    <!-- ЕДИНЫЙ СКРИПТ -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var video = document.getElementById('bg-video');
-
-            // Принудительный запуск видео
-            var playPromise = video.play();
-
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    // Автозапуск сработал
-                    console.log("Видео запущено автоматически");
-                })
-                .catch(error => {
-                    // Автозапуск заблокирован браузером
-                    console.log("Автозапуск заблокирован. Ждем клика пользователя.");
-
-                    // Если автозапуск не сработал, запускаем по первому клику в любом месте экрана
-                    document.addEventListener('click', function() {
-                        video.play();
-                    }, { once: true }); // Сработает только один раз
-                });
+            // 1. Скрипт для фонового видео
+            var bgVideo = document.getElementById('bg-video');
+            if (bgVideo) {
+                var playPromise = bgVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        console.log("Фоновое видео запущено");
+                    })
+                    .catch(error => {
+                        console.log("Автозапуск заблокирован. Ждем клика.");
+                        document.addEventListener('click', function() {
+                            bgVideo.play();
+                        }, { once: true });
+                    });
+                }
             }
         });
+
+        // 2. Скрипт для открытия и закрытия локального видео в модальном окне
+        function openVideo(videoUrl) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('localVideo');
+
+            video.src = videoUrl;
+            modal.style.display = 'block';
+            video.play();
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('localVideo');
+
+            video.pause();
+            video.currentTime = 0;
+            video.src = "";
+            modal.style.display = 'none';
+        }
+
+        // Закрытие при клике на черный фон вокруг видео
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeVideo();
+            }
+        }
     </script>
+
 </body>
 </html>

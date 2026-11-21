@@ -308,3 +308,132 @@ body {
         font-size: 4rem;
     }
 }
+
+/* --- СЕКЦИЯ ВИДЕО --- */
+.video-section {
+    padding: 100px 5%;
+    background: #0a0a0a;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    line-height: 1.1;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.video-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 16 / 9; /* Соотношение сторон как у видео */
+}
+
+.video-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.video-card:hover img {
+    transform: scale(1.05);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-btn {
+    width: 70px;
+    height: 70px;
+    background: rgba(230, 57, 70, 0.8);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    padding-left: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.video-card:hover .play-btn {
+    background: #e63946;
+    transform: scale(1.1);
+}
+
+.video-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.6);
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+/* --- МОДАЛЬНОЕ ОКНО ВИДЕО --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    width: 80%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+}
+
+.modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #e63946;
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 768px) {
+    .video-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 2rem; }
+    .modal-content { width: 95%; margin: 30% auto; }
+}
