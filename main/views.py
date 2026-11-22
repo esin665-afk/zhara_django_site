@@ -45,8 +45,16 @@ def booking(request):
     try:
         response = requests.post(
             f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
-            json={"chat_id": TELEGRAM_CHAT_ID, "text": text},
-            timeout=25,
+            json={
+                "chat_id": TELEGRAM_CHAT_ID,
+                "text": text,
+                "parse_mode": "HTML"
+            },
+            proxies={
+                "http": "socks5h://127.0.0.1:40000",
+                "https": "socks5h://127.0.0.1:40000"
+            },
+            timeout=10
         )
         if not response.ok:
             print(f"Telegram ответил ошибкой: {response.status_code} {response.text}")
