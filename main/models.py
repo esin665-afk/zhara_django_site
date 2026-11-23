@@ -45,3 +45,30 @@ class BotOrder(models.Model):
     @property
     def total_minutes(self):
         return round(self.total_time or 0, 1)
+
+
+class Song(models.Model):
+    title = models.CharField(max_length=255)
+    price = models.IntegerField()
+    duration = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'songs'
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
+
+
+class OrderSong(models.Model):
+    order = models.ForeignKey(BotOrder, on_delete=models.CASCADE, db_column='order_id', related_name='order_songs')
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, db_column='song_id')
+
+    class Meta:
+        managed = False
+        db_table = 'order_songs'
+        unique_together = ('order', 'song')
+
+    def __str__(self):
+        return f'{self.order_id} — {self.song.title if self.song else "—"}'
