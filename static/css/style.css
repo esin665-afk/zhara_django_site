@@ -25,6 +25,45 @@ body {
     background-color: #000;
 }
 
+/* --- АНИМАЦИЯ ПОЯВЛЕНИЯ ТЕКСТА --- */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(60px); /* Текст изначально на 60px ниже */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Текст встает на свое место */
+    }
+}
+
+/* Изначально прячем элементы, чтобы они не мигали до начала анимации */
+.hero-content .subtitle,
+.hero-content h1,
+.hero-content p,
+.hero-content .btn {
+    opacity: 0;
+    /* 1s — длительность, ease-out — плавное замедление в конце */
+    animation: slideUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Делаем задержки, чтобы элементы выезжали по очереди */
+.hero-content .subtitle { animation-delay: 0.2s; } /* Выезжает первым */
+.hero-content h1 { animation-delay: 0.5s; }       /* Заголовок вторым */
+.hero-content p { animation-delay: 0.8s; }        /* Описание третьим */
+.hero-content .btn { animation-delay: 1.1s; }     /* Кнопка последней */
+
+/* Для пользователей, у которых в системе отключены анимации (для экономии батареи или по здоровью) */
+@media (prefers-reduced-motion: reduce) {
+    .hero-content .subtitle,
+    .hero-content h1,
+    .hero-content p,
+    .hero-content .btn {
+        animation: none;
+        opacity: 1;
+    }
+}
+
 .bg-video {
     position: absolute;
     top: 0;
