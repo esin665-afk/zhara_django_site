@@ -319,11 +319,12 @@ body {
         text-align: center;
     }
 
-        /* Секция о группе (мобильная версия) */
+         /* Секция о группе (мобильная версия) */
     .about-section {
         padding: 80px 20px;
-        /* background-attachment: scroll;  <-- УДАЛИ ЭТУ СТРОЧКУ */
-        background-position: center center;
+        background-attachment: scroll; /* Возвращаем, чтобы не было глюков */
+        background-position: center top; /* ВАЖНО: чтобы на телефоне были видны лица, а не ноги */
+        background-size: cover;
     }
 
     .about-content h2 {
