@@ -8,6 +8,9 @@ class SongAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     ordering = ('title',)
 
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 class OrderSongInline(admin.TabularInline):
     model = OrderSong
