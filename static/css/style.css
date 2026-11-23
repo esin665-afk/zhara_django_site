@@ -16,33 +16,30 @@ body {
 /* --- ГЛАВНЫЙ ЭКРАН С ВИДЕО --- */
 .hero {
     position: relative;
-    height: 100vh; /* Высота на весь экран */
+    height: 100vh;
     width: 100%;
     display: flex;
-    align-items: center; /* Центрируем контент по вертикали */
+    align-items: center;
     padding: 0 5%;
     overflow: hidden;
     background-color: #000;
 }
 
-/* Само видео на фоне */
 .bg-video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Заполняет весь экран */
-    z-index: 1; /* ВАЖНО: видео теперь над фоном секции */
-    pointer-events: none; /* Отключаем клики по самому видео */
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
     -webkit-tap-highlight-color: transparent;
-    /* filter: brightness(0.5); */ /* Пока закомментируем, проверим так */
 }
 
-/* Текст поверх видео */
 .hero-content {
     position: relative;
-    z-index: 10; /* Текст НА ПЕРЕДНЕМ ПЛАНЕ */
+    z-index: 10;
     max-width: 900px;
     text-align: left;
 }
@@ -66,7 +63,7 @@ body {
 }
 
 .hero-content h1 span {
-    color: #e63946; /* Красный акцент */
+    color: #e63946;
 }
 
 .hero-content p {
@@ -95,68 +92,63 @@ body {
     transform: scale(1.02);
 }
 
-/* --- СЕКЦИЯ "О ГРУППЕ" (ФОТО ФОН + ЦИФРЫ) --- */
+/* --- СЕКЦИЯ "О ГРУППЕ" (ФОТО НА ФОНЕ) --- */
 .about-section {
     position: relative;
-    /* Устанавливаем минимальную высоту на весь экран */
-    min-height: 100vh;
-    /* Настройки фона, чтобы фото заполняло весь блок */
+    min-height: 100vh; /* Блок на весь экран */
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Эффект параллакса при скролле */
+    background-position: center top;
+    background-attachment: fixed; /* Параллакс на ПК */
     display: flex;
-    align-items: center; /* Центрируем контент по вертикали */
+    align-items: center;
     padding: 100px 5%;
 }
 
-/* Затемняющий градиент для фото (чтобы текст читался) */
+/* Затемняющий градиент, чтобы текст читался поверх фото */
 .about-section::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    /* Слева темнее (0.95), справа прозрачнее (0.5). Если фото темное - уменьшите цифры */
-    background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
     z-index: 0;
 }
 
 .about-content {
     position: relative;
     z-index: 1;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     width: 100%;
 }
 
 .about-content h2 {
-    font-size: 5rem; /* Сделал шрифт еще крупнее */
+    font-size: 5rem;
     font-weight: 900;
     text-transform: uppercase;
     line-height: 0.95;
     margin-bottom: 30px;
-    max-width: 900px;
-    text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.9);
 }
 
 .about-content h2 span {
-    color: #e63946; /* Наш фирменный красный */
+    color: #e63946;
 }
 
 .about-content p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 1.6;
     color: #eee;
     max-width: 650px;
     margin-bottom: 80px;
-    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 /* Блок со статистикой */
 .stats {
     display: flex;
     gap: 80px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     padding-top: 40px;
-    max-width: 800px;
 }
 
 .stat-item h3 {
@@ -164,6 +156,7 @@ body {
     color: #e63946;
     line-height: 1;
     margin-bottom: 10px;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 .stat-item p {
@@ -171,142 +164,6 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: #ccc;
-    margin-top: 0;
-}
-
-/* Адаптивность для телефонов */
-@media (max-width: 768px) {
-    .about-section { padding: 80px 5%; min-height: auto; }
-    .about-content h2 { font-size: 3rem; }
-    .about-content p { font-size: 1.1rem; margin-bottom: 50px; }
-    .stats {
-        flex-direction: column;
-        gap: 30px;
-        border-top: none;
-    }
-    .stat-item h3 { font-size: 4rem; }
-}
-
-/* --- СЕКЦИЯ ВИДЕО (КАРТОЧКИ) --- */
-.video-section {
-    padding: 100px 5%;
-    background: #000;
-}
-
-.section-title {
-    font-size: 3rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 50px;
-}
-
-.video-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.video-card {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.video-card img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    transition: transform 0.5s;
-}
-
-.video-card:hover img {
-    transform: scale(1.05);
-}
-
-.video-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.play-btn {
-    width: 80px;
-    height: 80px;
-    background: rgba(230, 57, 70, 0.8);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    padding-left: 5px;
-    transition: background 0.3s;
-}
-
-.video-card:hover .play-btn {
-    background: #e63946;
-}
-
-.video-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    z-index: 2;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-/* --- АДАПТИВНОСТЬ --- */
-@media (max-width: 768px) {
-    /* Уменьшаем шрифт, чтобы влазил на экран телефона */
-    .hero-content h1 {
-        font-size: 2.8rem;
-        line-height: 1.1;
-        letter-spacing: -1px;
-    }
-
-    .hero-content .subtitle {
-        font-size: 0.8rem;
-        letter-spacing: 3px;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .btn {
-        padding: 15px 30px;
-        font-size: 1rem;
-        width: 100%; /* Кнопка на всю ширину на телефоне */
-        text-align: center;
-    }
-
-    /* Настройки для блока "О группе" на телефоне */
-    .about-section {
-        padding: 80px 5%;
-        min-height: auto;
-        background-attachment: scroll; /* Отключаем фиксацию фона (на мобильных она глючит) */
-    }
-    .about-content h2 {
-        font-size: 2.5rem;
-        line-height: 1.1;
-    }
-    .about-content p {
-        font-size: 1rem;
-        margin-bottom: 50px;
-    }
-    .stats {
-        flex-direction: column;
-        gap: 30px;
-        border-top: none;
-    }
-    .stat-item h3 {
-        font-size: 4rem;
-    }
 }
 
 /* --- СЕКЦИЯ ВИДЕО --- */
@@ -337,7 +194,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
-    aspect-ratio: 16 / 9; /* Соотношение сторон как у видео */
+    aspect-ratio: 16 / 9;
 }
 
 .video-card img {
@@ -405,10 +262,10 @@ body {
 
 .modal-content {
     position: relative;
-    margin: 5% auto; /* Отступ сверху, чтобы окно было по центру */
-    width: 90%; /* Ширина окна на телефоне */
-    max-width: 1000px; /* Максимальная ширина на ПК */
-    background: #000; /* Черный фон вокруг видео, если пропорции не совпадают */
+    margin: 5% auto;
+    width: 90%;
+    max-width: 1000px;
+    background: #000;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
@@ -416,10 +273,10 @@ body {
 
 .modal-content video {
     width: 100%;
-    height: auto; /* Высота подстраивается под ширину видео */
-    max-height: 80vh; /* Ограничиваем высоту, чтобы не вылезало за экран */
+    height: auto;
+    max-height: 80vh;
     display: block;
-    object-fit: contain; /* Видео вписывается целиком, не обрезаясь */
+    object-fit: contain;
 }
 
 .close-btn {
@@ -438,9 +295,62 @@ body {
     color: #e63946;
 }
 
-/* Адаптив для телефонов */
+/* =========================================
+   АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ (ОДИН ОБЩИЙ БЛОК)
+   ========================================= */
 @media (max-width: 768px) {
-    .video-grid { grid-template-columns: 1fr; }
-    .section-title { font-size: 2rem; }
-    .modal-content { width: 95%; margin: 30% auto; }
+    /* Главный экран */
+    .hero-content h1 {
+        font-size: 2.8rem;
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+    .hero-content .subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Секция о группе (мобильная версия) */
+    .about-section {
+        padding: 80px 20px;
+        background-attachment: scroll; /* Отключаем параллакс на телефоне */
+        background-position: center center;
+    }
+    .about-content h2 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+    }
+    .about-content p {
+        font-size: 1rem;
+        margin-bottom: 50px;
+    }
+    .stats {
+        flex-direction: column;
+        gap: 30px;
+        border-top: none;
+    }
+    .stat-item h3 {
+        font-size: 4rem;
+    }
+
+    /* Секция видео */
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .modal-content {
+        width: 95%;
+        margin: 30% auto;
+    }
 }
