@@ -95,16 +95,16 @@ body {
 /* --- СЕКЦИЯ "О ГРУППЕ" (ФОТО НА ФОНЕ) --- */
 .about-section {
     position: relative;
-    min-height: 100vh; /* Блок на весь экран */
+    min-height: 100vh;
     background-size: cover;
-    background-position: center top;
-    background-attachment: fixed; /* Параллакс на ПК */
+    background-position: center center; /* ВЕРНУЛИ ЦЕНТР, чтобы люди были видны */
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     padding: 100px 5%;
 }
 
-/* Затемняющий градиент, чтобы текст читался поверх фото */
+/* Затемняющий градиент */
 .about-section::before {
     content: '';
     position: absolute;
@@ -319,12 +319,13 @@ body {
         text-align: center;
     }
 
-    /* Секция о группе (мобильная версия) */
+        /* Секция о группе (мобильная версия) */
     .about-section {
         padding: 80px 20px;
-        background-attachment: scroll; /* Отключаем параллакс на телефоне */
+        /* background-attachment: scroll;  <-- УДАЛИ ЭТУ СТРОЧКУ */
         background-position: center center;
     }
+
     .about-content h2 {
         font-size: 2.5rem;
         line-height: 1.1;
