@@ -1,7 +1,7 @@
 import os
 import requests
 from django.shortcuts import render
-from .models import BotOrder
+from .models import BotOrder, Song  # <-- ДОБАВИЛИ Song
 
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '')
 TELEGRAM_CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID', '')
@@ -64,3 +64,10 @@ def booking(request):
         print(f"Ошибка Telegram: {e}")
 
     return render(request, 'main/success.html')
+
+
+# --- НОВАЯ ФУНКЦИЯ ДЛЯ РЕПЕРТУАРА ---
+def repertoire(request):
+    """Страница с репертуаром группы."""
+    songs = Song.objects.all()  # Достаем все песни из базы
+    return render(request, 'main/repertoire.html', {'songs': songs})
