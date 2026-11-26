@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ЖАРА | Коммерческое предложение</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Принудительная печать фона */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            color: #fff;
+            -webkit-print-color-adjust: exact;
+        }
+
+        /* Настройка страницы А4 */
+        @page { size: A4; margin: 0; }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            overflow: hidden;
+            background: url('static/images/about-bg.jpg') center center / cover no-repeat;
+            /* ВАЖНО: Если картинка не появится, проверь путь выше.
+               Файл about-bg.jpg должен лежать в папке static/images/ */
+        }
+
+        /* Затемняющий слой поверх фото, чтобы текст читался */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 100%);
+            z-index: 1;
+        }
+
+                /* Контент (текст) поверх затемнения */
+        .content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            padding: 15mm 20mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* <-- ВОТ ЭТА СТРОЧКА */
+        }
+
+        /* Красная полоса сбоку */
+        .red-bar {
+            position: absolute;
+            top: 0; left: 0;
+            width: 6mm; height: 100%;
+            background: #e63946;
+            z-index: 3;
+        }
+
+        /* --- ШАПКА --- */
+        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10mm; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5mm; }
+        .logo { font-size: 50px; font-weight: 900; color: #e63946; letter-spacing: 2px; line-height: 1; }
+        .logo span { color: #fff; }
+        .subtitle { font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: #ccc; margin-top: 5px; }
+
+        .contacts-top { text-align: right; font-size: 12px; color: #ccc; }
+        .contacts-top a { color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; display: block; margin-bottom: 5px; white-space: nowrap;}
+
+        /* --- ЗАГОЛОВОК --- */
+        .hero-title { font-size: 48px; font-weight: 900; line-height: 1; text-transform: uppercase; margin-bottom: 10mm; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .hero-title span { color: #e63946; }
+
+        /* --- СЕТКА ТЕКСТА --- */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; margin-bottom: 8mm; }
+
+        .section-title {
+            font-size: 12px; color: #e63946; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 3mm; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2mm;
+        }
+
+        p { font-size: 12px; line-height: 1.5; color: #eee; margin-bottom: 2mm; }
+        ul { list-style: none; padding-left: 0; }
+        ul li { position: relative; padding-left: 15px; margin-bottom: 3px; font-size: 12px; color: #eee; }
+        ul li::before { content: '■'; color: #e63946; position: absolute; left: 0; font-size: 10px; top: 2px; }
+
+        /* --- ПОДВАЛ --- */
+        .footer {
+            border-top: 2px solid #e63946;
+            padding-top: 5mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-text { font-size: 12px; color: #aaa; margin-bottom: 5px; }
+        .footer-phone { font-size: 28px; font-weight: 900; color: #fff; line-height: 1; }
+        .footer-tg { font-size: 14px; color: #e63946; font-weight: 700; margin-top: 5px; }
+
+        /* Место под QR-код */
+        .qr-block {
+            width: 30mm; height: 30mm;
+            background: rgba(255,255,255,0.9);
+            border-radius: 5px;
+            display: flex; justify-content: center; align-items: center;
+            text-align: center; font-size: 10px; color: #000; font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="red-bar"></div>
+
+        <div class="content">
+            <!-- Шапка -->
+            <div class="header">
+                <div>
+                    <div class="logo">ЖАРА<span>.</span></div>
+                    <div class="subtitle">Кавер-группа на свадьбы и корпоративы (г. Рязань)</div>
+                </div>
+                <div class="contacts-top">
+                    <p>Забронировать дату:</p>
+                    <a href="tel:+79106164760">+7 (910) 616-47-60</a>
+                    <p>zhara-band.ru</p>
+                </div>
+            </div>
+
+            <!-- Заголовок -->
+            <h1 class="hero-title">ЖИВАЯ МУЗЫКА<br>ДЛЯ ЖИВЫХ <span>ЭМОЦИЙ</span></h1>
+
+            <!-- Кто мы и Состав -->
+            <div class="grid-2">
+                <div>
+                    <div class="section-title">Кто мы</div>
+                    <p>Мы — живой коллектив из 4 человек. Играем танцевальные хиты (русский поп, зарубежная классика), которые создают атмосферу на любом празднике. Приезжаем со своим оборудованием, работаем официально по договору.</p>
+                </div>
+                <div>
+                    <div class="section-title">Состав</div>
+                    <ul>
+                        <li>Вокал</li>
+                        <li>Гитара</li>
+                        <li>Бас-гитара</li>
+                        <li>Барабаны</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Репертуар и Райдер -->
+            <div class="grid-2">
+                <div>
+                    <div class="section-title">Топ-5 хитов</div>
+                    <ul>
+                        <li>Гречка - Люби меня, люби</li>
+                        <li>Леприконсы - Хали-гали</li>
+                        <li>Мумий Тролль - Владивосток 2000</li>
+                        <li>Штрудель - Седая ночь</li>
+                        <li>Звери – Всё, что касается</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="section-title">Технический райдер</div>
+                    <p><b>Привозим сами:</b> инструменты, микрофоны, усилители.</p>
+                    <p><b>От площадки:</b> 2 розетки 220V и место на сцене (от 3х3 м).</p>
+                </div>
+            </div>
+
+                        <!-- Подвал -->
+            <div class="footer">
+                <div>
+                    <div class="footer-text">Свяжитесь с нами для бронирования:</div>
+                    <div class="footer-phone">+7 (910) 616-47-60</div>
+
+                    <!-- Сделали ссылку на ВК красивой и кликабельной -->
+                    <a href="https://vk.ru/zhara_62" style="display: block; color: #ccc; text-decoration: none; font-size: 12px; margin-top: 5px;">vk.ru/zhara_62</a>
+
+                    <p style="font-size: 12px; margin-top: 5px; color: #ccc;">Telegram: <b>@ZHARA_BAND_BOT</b></p>
+                </div>
+
+                <!-- QR-код -->
+                <div class="qr-block" style="background: #fff; padding: 5px; border-radius: 5px;">
+                    <img src="static/images/qr.png" alt="QR-код бота" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
