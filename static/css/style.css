@@ -395,3 +395,110 @@ body {
         margin: 30% auto;
     }
 }
+
+/* =========================================
+   СТРАНИЦА БРОНИРОВАНИЯ (BOOKING)
+   ========================================= */
+.booking-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Фоновое изображение с затемнением */
+.booking-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.9)), url('../images/about-bg.jpg') center/cover no-repeat;
+    z-index: -1;
+}
+
+/* Карточка формы (эффект стекла) */
+.booking-container {
+    background: rgba(20, 20, 20, 0.7); /* Полупрозрачный черный */
+    backdrop-filter: blur(10px); /* Размытие фона за формой */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 50px 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+.booking-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #e63946;
+    margin-bottom: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+/* Поля ввода */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ccc;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    transition: border 0.3s, background 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #e63946; /* Красная рамка при клике */
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Кнопка */
+.btn-submit {
+    width: 100%;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #bc2f3a;
+    transform: translateY(-2px);
+}
+
+/* Адаптация под мобильные */
+@media (max-width: 768px) {
+    .booking-container {
+        padding: 30px 20px;
+        margin: 20px;
+        width: calc(100% - 40px);
+    }
+    .booking-title {
+        font-size: 1.5rem;
+    }
+}
