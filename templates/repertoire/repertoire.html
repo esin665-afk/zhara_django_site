@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Репертуар | ЖАРА</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="repertoire-page">
+
+    <div class="container">
+        <h1 class="repertoire-title">НАШ РЕПЕРТУАР</h1>
+        <p class="repertoire-subtitle">Выберите песни для вашего идеального вечера</p>
+
+        <div class="songs-grid">
+            {% for song in songs %}
+            <div class="song-card">
+                <div class="song-info">
+                    <span class="song-genre">{{ song.genre.name }}</span>
+                    <h3 class="song-title">{{ song.title }}</h3>
+                    <p class="song-artist">{{ song.artist }}</p>
+                    <p class="song-duration">⏱ {{ song.duration }} мин.</p>
+                </div>
+                <div class="song-price">
+                    {{ song.price }} ₽
+                </div>
+            </div>
+            {% empty %}
+            <p style="color: #fff; text-align: center; width: 100%;">Пока в репертуаре нет песен. Добавьте их через админку!</p>
+            {% endfor %}
+        </div>
+
+        <div style="text-align: center; margin-top: 60px; margin-bottom: 40px;">
+            <a href="/" class="btn">← Вернуться на главную</a>
+        </div>
+    </div>
+
+</body>
+</html>

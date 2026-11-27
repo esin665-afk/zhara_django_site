@@ -513,3 +513,109 @@ body {
     display: flex;
     align-items: center;
 }
+
+/* =========================================
+   СТРАНИЦА РЕПЕРТУАРА
+   ========================================= */
+.repertoire-page {
+    background-color: #0a0a0a;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.repertoire-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 1.1;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.repertoire-subtitle {
+    text-align: center;
+    color: #aaa;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+
+/* Сетка карточек */
+.songs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* Карточка песни */
+.song-card {
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.song-card:hover {
+    transform: translateY(-5px);
+    border-color: #e63946;
+    box-shadow: 0 10px 25px rgba(230, 57, 70, 0.15);
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
+    padding-right: 15px;
+}
+
+.song-genre {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #e63946;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+}
+
+.song-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.song-artist {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.song-duration {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.song-price {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .repertoire-title { font-size: 2.2rem; }
+    .songs-grid { grid-template-columns: 1fr; }
+}
