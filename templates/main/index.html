@@ -5,9 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЖАРА | Официальный сайт</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=4">
 </head>
 <body>
+
+    <!-- ШАПКА САЙТА С ЛОГОТИПОМ И САНТОЙ -->
+    <header style="position: absolute; top: 0; left: 0; width: 100%; padding: 20px 5%; z-index: 100; display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo" style="font-size: 2rem; font-weight: 900; color: #e63946; cursor: pointer;" onclick="window.location.href='/'">
+            <span class="logo-santa-wrap">Ж<span class="santa-hat">🎅</span></span>АРА<span style="color:#fff;">.</span>
+        </div>
+        <!-- Кнопка меню или контакты (можешь добавить, если нужно) -->
+    </header>
 
     <!-- ГЛАВНЫЙ ЭКРАН С ВИДЕО -->
     <section class="hero" id="hero-section">

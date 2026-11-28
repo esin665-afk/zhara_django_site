@@ -658,7 +658,19 @@ body {
 /* --- НОВОГОДНЯЯ АНИМАЦИЯ НА КНОПКЕ --- */
 .btn-snow {
     position: relative;
-    overflow: hidden; /* Чтобы снежинки не вылетали за края кнопки */
+    overflow: hidden;
+
+    /* --- НОВОГОДНИЙ ЛЕД НА КНОПКЕ --- */
+    border: 2px solid #aee2ff; /* Светло-голубая кромка льда */
+    box-shadow: 0 0 15px rgba(174, 226, 255, 0.4), inset 0 0 10px rgba(174, 226, 255, 0.3);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+/* Делаем так, чтобы при наведении кнопка становилась еще более ледяной */
+.btn-snow:hover {
+    box-shadow: 0 0 25px rgba(174, 226, 255, 0.7), inset 0 0 15px rgba(174, 226, 255, 0.5);
+    border-color: #fff;
 }
 
 /* Базовый стиль снежинки */
@@ -712,4 +724,27 @@ body {
         transform: translateY(60px) rotate(360deg); /* Падает вниз */
         opacity: 0;
     }
+}
+
+/* --- САНТА НА ЛОГОТИПЕ --- */
+.logo-santa-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.santa-hat {
+    position: absolute;
+    top: -15px; /* Поднимаем Санту над буквой */
+    right: -20px; /* Сдвигаем вправо */
+    font-size: 28px;
+    transform: rotate(-15deg); /* Наклоняем */
+    animation: santaBounce 2s infinite ease-in-out; /* Легкое покачивание */
+    pointer-events: none; /* Чтобы не мешал кликать по логотипу */
+    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5)); /* Красная тень */
+}
+
+/* Анимация покачивания Санты */
+@keyframes santaBounce {
+    0%, 100% { transform: translateY(0) rotate(-15deg); }
+    50% { transform: translateY(-5px) rotate(-5deg); }
 }
