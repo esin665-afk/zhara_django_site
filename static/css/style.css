@@ -654,3 +654,40 @@ body {
     color: #fff;
     border-color: #e63946;
 }
+
+/* =========================================
+   НОВОГОДНЯЯ АНИМАЦИЯ НА КНОПКЕ
+   ========================================= */
+.btn-snow {
+    position: relative;
+    overflow: hidden; /* Чтобы снежинка не вылетала за края */
+}
+
+/* Стили для самой снежинки */
+.snowflake {
+    position: absolute;
+    top: -20px; /* Начинает сверху за пределами кнопки */
+    left: 10px;
+    font-size: 24px;
+    opacity: 0; /* Изначально невидима */
+    pointer-events: none; /* Чтобы не мешала клику */
+    animation: snowFall 3s infinite; /* Бесконечная анимация */
+}
+
+/* Анимация падения и таяния */
+@keyframes snowFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1; /* Появляется */
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(70px) rotate(360deg); /* Падает вниз и крутится */
+        opacity: 0; /* Исчезает (таяет) */
+    }
+}
