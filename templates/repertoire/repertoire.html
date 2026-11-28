@@ -13,6 +13,17 @@
         <h1 class="repertoire-title">НАШ РЕПЕРТУАР</h1>
         <p class="repertoire-subtitle">Выберите песни для вашего идеального вечера</p>
 
+        <!-- КНОПКИ ФИЛЬТРАЦИИ ПО ЖАНРАМ -->
+        <div class="genre-filters">
+            <a href="{% url 'repertoire:list' %}" class="genre-btn {% if not current_genre %}active{% endif %}">Все жанры</a>
+            {% for genre in genres %}
+                <a href="{% url 'repertoire:list' %}?genre={{ genre.slug }}"
+                   class="genre-btn {% if current_genre == genre.slug %}active{% endif %}">
+                    {{ genre.name }}
+                </a>
+            {% endfor %}
+        </div>
+
         <div class="songs-grid">
             {% for song in songs %}
             <div class="song-card">
@@ -27,7 +38,7 @@
                 </div>
             </div>
             {% empty %}
-            <p style="color: #fff; text-align: center; width: 100%;">Пока в репертуаре нет песен. Добавьте их через админку!</p>
+            <p style="color: #fff; text-align: center; width: 100%;">В этом жанре пока нет песен</p>
             {% endfor %}
         </div>
 

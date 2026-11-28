@@ -619,3 +619,38 @@ body {
     .repertoire-title { font-size: 2.2rem; }
     .songs-grid { grid-template-columns: 1fr; }
 }
+
+/* =========================================
+   ФИЛЬТР ПО ЖАНРАМ (РЕПЕРТУАР)
+   ========================================= */
+.genre-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.genre-btn {
+    padding: 10px 22px;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 25px;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.genre-btn:hover {
+    border-color: #e63946;
+    color: #fff;
+    background: rgba(230, 57, 70, 0.1);
+}
+
+.genre-btn.active {
+    background: #e63946;
+    color: #fff;
+    border-color: #e63946;
+}
