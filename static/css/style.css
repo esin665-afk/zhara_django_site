@@ -655,39 +655,61 @@ body {
     border-color: #e63946;
 }
 
-/* =========================================
-   НОВОГОДНЯЯ АНИМАЦИЯ НА КНОПКЕ
-   ========================================= */
+/* --- НОВОГОДНЯЯ АНИМАЦИЯ НА КНОПКЕ --- */
 .btn-snow {
     position: relative;
-    overflow: hidden; /* Чтобы снежинка не вылетала за края */
+    overflow: hidden; /* Чтобы снежинки не вылетали за края кнопки */
 }
 
-/* Стили для самой снежинки */
+/* Базовый стиль снежинки */
 .snowflake {
     position: absolute;
-    top: -20px; /* Начинает сверху за пределами кнопки */
-    left: 10px;
-    font-size: 24px;
-    opacity: 0; /* Изначально невидима */
-    pointer-events: none; /* Чтобы не мешала клику */
-    animation: snowFall 3s infinite; /* Бесконечная анимация */
+    top: -20px;
+    opacity: 0;
+    pointer-events: none;
+    animation: snowFall 3s infinite linear;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
-/* Анимация падения и таяния */
+/* Задаем снежинкам разные позиции, размеры и задержки */
+.snowflake:nth-of-type(1) {
+    left: 15%;
+    font-size: 18px;
+    animation-delay: 0s;
+}
+
+.snowflake:nth-of-type(2) {
+    left: 40%;
+    font-size: 14px;
+    animation-delay: 1.2s;
+}
+
+.snowflake:nth-of-type(3) {
+    left: 65%;
+    font-size: 20px;
+    animation-delay: 0.5s;
+}
+
+.snowflake:nth-of-type(4) {
+    left: 85%;
+    font-size: 16px;
+    animation-delay: 2s;
+}
+
+/* Анимация падения */
 @keyframes snowFall {
     0% {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
     20% {
-        opacity: 1; /* Появляется */
+        opacity: 1;
     }
     80% {
         opacity: 1;
     }
     100% {
-        transform: translateY(70px) rotate(360deg); /* Падает вниз и крутится */
-        opacity: 0; /* Исчезает (таяет) */
+        transform: translateY(60px) rotate(360deg); /* Падает вниз */
+        opacity: 0;
     }
 }
