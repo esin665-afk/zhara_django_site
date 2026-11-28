@@ -1,0 +1,434 @@
+[
+{
+    "model": "repertoire.genre",
+    "pk": 1,
+    "fields": {
+        "name": "Рок",
+        "slug": "rok"
+    }
+},
+{
+    "model": "repertoire.genre",
+    "pk": 2,
+    "fields": {
+        "name": "Поп",
+        "slug": "pop"
+    }
+},
+{
+    "model": "repertoire.genre",
+    "pk": 3,
+    "fields": {
+        "name": "Ретро",
+        "slug": "retro"
+    }
+},
+{
+    "model": "repertoire.genre",
+    "pk": 4,
+    "fields": {
+        "name": "Рок / Альтернатива",
+        "slug": "rock"
+    }
+},
+{
+    "model": "repertoire.genre",
+    "pk": 6,
+    "fields": {
+        "name": "Зарубежные хиты",
+        "slug": "foreign"
+    }
+},
+{
+    "model": "repertoire.genre",
+    "pk": 8,
+    "fields": {
+        "name": "На заказ",
+        "slug": "custom"
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 1,
+    "fields": {
+        "title": "Люби меня",
+        "artist": "Гречка",
+        "genre": 4,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 2,
+    "fields": {
+        "title": "Хали-Гали",
+        "artist": "Хали-Гали",
+        "genre": 4,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 3,
+    "fields": {
+        "title": "Твои руки",
+        "artist": "Гречка",
+        "genre": 4,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 4,
+    "fields": {
+        "title": "Всё, что тебя касается",
+        "artist": "Звери",
+        "genre": 4,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 5,
+    "fields": {
+        "title": "Танцуй",
+        "artist": "Звери",
+        "genre": 4,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 6,
+    "fields": {
+        "title": "Кукла колдуна",
+        "artist": "KISH",
+        "genre": 4,
+        "duration": 4.0,
+        "price": 3500,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 7,
+    "fields": {
+        "title": "Лесник",
+        "artist": "KISH",
+        "genre": 4,
+        "duration": 4.0,
+        "price": 3500,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 8,
+    "fields": {
+        "title": "Smells Like Teen Spirit",
+        "artist": "Nirvana",
+        "genre": 4,
+        "duration": 4.0,
+        "price": 4000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 9,
+    "fields": {
+        "title": "Владивосток 2000",
+        "artist": "МУМИЙ ТРОЛЛЬ",
+        "genre": 2,
+        "duration": 4.0,
+        "price": 3500,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 10,
+    "fields": {
+        "title": "Невеста",
+        "artist": "МУМИЙ ТРОЛЛЬ",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 11,
+    "fields": {
+        "title": "Утекай",
+        "artist": "МУМИЙ ТРОЛЛЬ",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 12,
+    "fields": {
+        "title": "Между нами",
+        "artist": "Серебро",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 13,
+    "fields": {
+        "title": "Он тебя целует",
+        "artist": "Руки Вверх",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 14,
+    "fields": {
+        "title": "Ненавижу",
+        "artist": "Иван Дорн",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 15,
+    "fields": {
+        "title": "Танцы",
+        "artist": "Банд'Эрос",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 16,
+    "fields": {
+        "title": "Сюзanna",
+        "artist": "Мальбэк",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 17,
+    "fields": {
+        "title": "Ты не верь слезам",
+        "artist": "Шура",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 18,
+    "fields": {
+        "title": "На большом воздушном шаре",
+        "artist": "Елка",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 19,
+    "fields": {
+        "title": "Хуторянка",
+        "artist": "Потап и Настя",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 20,
+    "fields": {
+        "title": "Улыбайся",
+        "artist": "IOWA",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 21,
+    "fields": {
+        "title": "Хоп Хей Лала Лей",
+        "artist": "Леонид Агутин",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 22,
+    "fields": {
+        "title": "Пожары",
+        "artist": "Хolidayboy",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 23,
+    "fields": {
+        "title": "Посмотри",
+        "artist": "Мишель",
+        "genre": 2,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 24,
+    "fields": {
+        "title": "Трава у дома",
+        "artist": "Земляне",
+        "genre": 2,
+        "duration": 4.0,
+        "price": 3500,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 25,
+    "fields": {
+        "title": "Beggin",
+        "artist": "Maneskin",
+        "genre": 6,
+        "duration": 3.0,
+        "price": 3500,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 26,
+    "fields": {
+        "title": "Wicked Game",
+        "artist": "Him",
+        "genre": 6,
+        "duration": 4.0,
+        "price": 3500,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 27,
+    "fields": {
+        "title": "Bad Guy",
+        "artist": "Billie Eilish",
+        "genre": 6,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 28,
+    "fields": {
+        "title": "Skalolaz",
+        "artist": "Zoya",
+        "genre": 6,
+        "duration": 3.0,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 29,
+    "fields": {
+        "title": "Седая ночь",
+        "artist": "Штрудель",
+        "genre": 3,
+        "duration": 4.0,
+        "price": 3500,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 30,
+    "fields": {
+        "title": "Своя песня на заказ",
+        "artist": "—",
+        "genre": 8,
+        "duration": 4.0,
+        "price": 10000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 31,
+    "fields": {
+        "title": "Люби меня",
+        "artist": "Linkin Park",
+        "genre": 4,
+        "duration": 3.5,
+        "price": 3000,
+        "is_active": true
+    }
+},
+{
+    "model": "repertoire.song",
+    "pk": 32,
+    "fields": {
+        "title": "Wicked Game",
+        "artist": "Chris Isaak",
+        "genre": 6,
+        "duration": 4.0,
+        "price": 3500,
+        "is_active": true
+    }
+}
+]
